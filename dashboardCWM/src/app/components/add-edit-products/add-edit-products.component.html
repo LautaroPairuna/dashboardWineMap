@@ -1,0 +1,42 @@
+<div class="col-md-6 col-12 text-center mx-auto mt-3">
+    <div class="card bg-secondary mb-3">
+        <div class="card-header text-center">{{ operacion }} PRODUCTO</div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="addProduct()">
+                <input formControlName="producto" type="text" class="form-control" placeholder="Ingrese nombre">
+                <span *ngIf="form.get('producto')?.hasError('required') && form.get('producto')?.touched">
+                    El campo nombre es <strong>requerido</strong>
+                </span>
+                <input formControlName="foto" type="text" class="form-control mt-3" placeholder="Ingrese el nombre de la foto">
+                <span *ngIf="form.get('foto')?.hasError('required') && form.get('foto')?.touched">
+                    El campo nombre es <strong>requerido</strong>
+                </span>
+                <input formControlName="precio" type="number" class="form-control mt-3" placeholder="Ingrese el precio">
+                <span *ngIf="form.get('precio')?.hasError('required') && form.get('precio')?.touched">
+                    El campo nombre es <strong>requerido</strong>
+                </span>
+                <div class="form-group">
+                    <label for="destacado" class="form-label mt-3">Destacado</label>
+                    <select [(ngModel)]="destacadoSeleccionado" [ngModelOptions]="{standalone: true}" class="form-select" id="destacado">
+                        <option [value]="D.value" *ngFor="let D of destacado">{{D.nombre }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activo" class="form-label mt-3 me-auto">Activo</label>
+                    <select [(ngModel)]="activoSeleccionado" [ngModelOptions]="{standalone: true}" class="form-select" id="activo">
+                        <option [value]="A.value" *ngFor="let A of activo">{{ A.nombre }}</option>
+                    </select>
+                </div>
+                <div class="row mt-3 text-center">
+                    <div class="col-md-6 col-12 mt-3">
+                        <button type="button" class="btn btn-danger" routerLink="/">VOLVER</button>
+                    </div>
+                    <div class="col-md-6 col-12 mt-3">
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-success">{{ operacion }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ 

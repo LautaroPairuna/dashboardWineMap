@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="title">
+      <h1>Listado de Productos</h1>
+      <button type="button" class="btn btn-primary" routerLink="/add">Añadir</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">...</th>
+          <th scope="col">Id</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Foto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Destacado</th>
+          <th scope="col">Activo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of listProducts">
+          <td>
+            <button type="button" class="btn btn-sm float-left" routerLink="edit/{{ product.id }}"><img src="../../../assets/img/iconEdit.svg" alt="" class="icon-width"></button>
+            <button (click)="deleteProduct(product.id!)" type="button" class="btn btn-sm float-left"><img src="../../../assets/img/iconDelete.svg" alt="" class="icon-width"></button>
+          </td>
+          <th scope="row">{{ product.id }}</th>
+          <td>{{ product.producto }}</td>
+          <td>{{ product.foto }}</td>
+          <td>{{ product.precio | currency}}</td>
+          <td>{{ product.destacado }}</td>
+          <td>{{ product.activo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2 *ngIf="listProducts.length == 0" >No se ha encontrado ningun producto en la base de datos!!</h2>
+</div>
+
+
+  
+  
