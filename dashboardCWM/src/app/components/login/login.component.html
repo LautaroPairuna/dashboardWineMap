@@ -1,0 +1,24 @@
+<div class="col-md-6 col-12 text-center mx-auto mt-3">
+    <div class="card bg-secondary mb-3">
+        <div class="card-header text-center">Inicie Sesión</div>
+        <div class="card-body">
+            <p>En caso de no contar con un usuario o de haberlo olvidado, contactese con el soporte para una posible solucion</p>
+            <form [formGroup]="form" (ngSubmit)="login()">
+                <input name="usuario" formControlName="usuario" type="text" class="form-control" placeholder="Ingrese un usuario">
+                <span *ngIf="form.get('usuario')?.hasError('required') && form.get('usuario')?.touched">
+                    El campo 'usuario' es <strong>requerido</strong>
+                </span>
+                <input name="contrasena" formControlName="contrasena" type="text" class="form-control mt-3" placeholder="Ingrese una contrasena">
+                <span *ngIf="form.get('contrasena')?.hasError('required') && form.get('contrasena')?.touched">
+                    El campo 'contraseña' es <strong>requerido</strong>
+                </span>
+                <div class="row mt-3 text-center">
+                    <div class="col-12 mt-3">
+                        <button type="submit" class="btn btn-success">INGRESAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ 

@@ -12,7 +12,9 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-
+  login(usuario: string, contrasena: string): Observable<Admin> {
+    return this.http.post<Admin>(this.url + 'login', { usuario, contrasena });
+  }
 
 
 }
