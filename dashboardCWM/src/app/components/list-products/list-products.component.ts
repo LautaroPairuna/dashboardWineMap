@@ -20,7 +20,7 @@ export class ListProductsComponent implements OnInit {
   }
 
   getListProducts() {
-    this._productService.getListProducts().subscribe((data: Product[]) => {
+    this._productService.getListProducts().subscribe(data  => {
       this.listProducts = data
     })
   } 

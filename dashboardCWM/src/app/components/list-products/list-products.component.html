@@ -19,7 +19,9 @@
       <tbody>
         <tr *ngFor="let product of listProducts">
           <td>
-            <button type="button" class="btn btn-sm float-left" routerLink="edit/{{ product.id }}"><img src="../../../assets/img/iconEdit.svg" alt="" class="icon-width"></button>
+            <a class="btn btn-sm float-left" routerLink="products/edit/{{ product.id }}">
+              <img src="../../../assets/img/iconEdit.svg" alt="" class="icon-width">
+            </a>
             <button (click)="deleteProduct(product.id!)" type="button" class="btn btn-sm float-left"><img src="../../../assets/img/iconDelete.svg" alt="" class="icon-width"></button>
           </td>
           <th scope="row">{{ product.id }}</th>

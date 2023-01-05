@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { AddEditProductsComponent } from './components/add-edit-products/add-edit-products.component';
-import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component'; 
+import { ProgressBarComponent } from './shared/progress-bar/progress-bar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProgressBarComponent } from './shared/progress-bar/progress-bar.compone
     ListProductsComponent,
     AddEditProductsComponent, 
     NavbarComponent, 
-    ProgressBarComponent
+    ProgressBarComponent, 
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

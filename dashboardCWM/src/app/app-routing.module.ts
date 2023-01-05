@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEditProductsComponent } from './components/add-edit-products/add-edit-products.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: ListProductsComponent },
-  { path: 'add', component: AddEditProductsComponent },
-  { path: 'edit/:id', component: AddEditProductsComponent },
+  { path: '', component: LoginComponent },
+  { path: 'products', component: ListProductsComponent },
+  { path: 'products/add', component: AddEditProductsComponent },
+  { path: 'products/edit/:id', component: AddEditProductsComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

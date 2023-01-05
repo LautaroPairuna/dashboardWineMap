@@ -73,17 +73,19 @@ export class AddEditProductsComponent implements OnInit {
       })
     })
   }
+
   addProduct(){
 
     const product: Product = {
 
-      producto: this.form.value.producto,
-      foto: this.form.value.foto,
-      precio: this.form.value.precio,
+      producto: this.form.get('producto')?.value,
+      foto: this.form.get('foto')?.value,
+      precio: this.form.get('precio')?.value,
       destacado: this.destacadoSeleccionado,
       activo: this.activoSeleccionado
 
     }
+
 
     if(this.id !== 0) {
 
@@ -91,12 +93,17 @@ export class AddEditProductsComponent implements OnInit {
 
       this._productServices.updateProduct(this.id, product).subscribe(data => {
         this.products = data
+        this.router.navigate(['/'])
       })
 
     } else{
 
       this._productServices.saveProduct(product).subscribe(data => {
         this.products = data
+        this.router.navigate(['/']);
+        console.log(product)
+      }, error => {
+        console.log
       })
 
     }

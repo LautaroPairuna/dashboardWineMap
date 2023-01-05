@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Product } from '../interfaces/product';
 
 
@@ -10,41 +9,34 @@ import { Product } from '../interfaces/product';
 })
 export class ProductService {
 
-  private myAppUrl: string;
-  private myApiUrl: string;
+  url = 'http://localhost:3000/api/'
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) { }
+
+  getListProducts(): Observable<any> {
     
-    this.myAppUrl = environment.endpoint
-    this.myApiUrl = '/'
+    return this.http.get(this.url)
 
   }
 
-  getListProducts(): Observable<Product[]> {
+  getProduct(id: number): Observable<any> {
+    return this.http.get(this.url + id)
+  }
+
+  deleteProduct(id: number): Observable<any>{
+
+    return this.http.delete(this.url + id)
+
+  }
+
+  saveProduct(product: Product): Observable<any> {
+
+    return this.http.post(this.url, product)
     
-    return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`)
-
   }
 
-  deleteProduct(id: number): Observable<void>{
-
-    return this.http.delete<void>(`${this.myAppUrl}${this.myApiUrl}${id}`)
-
+  updateProduct(id: number, product: Product): Observable<any> {
+    return this.http.put(this.url + id, product)
   }
 
-  getProduct(id: number): Observable<Product>{
-
-    return this.http.get<Product>(`${this.myAppUrl}${this.myApiUrl}${id}`)
-
-  }
-
-  updateProduct(id: number, product: Product): Observable<void>{
-
-    return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, product)
-
-  }
-
-  saveProduct(product: Product): Observable<void> {
-    return this.http.post<void>(`${this.myAppUrl}${this.myApiUrl}`, product)
-  }
 }
